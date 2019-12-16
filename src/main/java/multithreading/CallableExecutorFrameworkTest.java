@@ -21,7 +21,6 @@ public class CallableExecutorFrameworkTest {
       System.out.println("Total Count:" + taskResult.getTotalCount() + ", ThreadId:" + taskResult.getThreadId());
     }
 
-
     executorService.shutdown();
   }
 }
