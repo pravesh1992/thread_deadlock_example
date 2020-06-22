@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.200.100.63/lbg_combine_0811_pravesh?autoReconnect=true
+    username: user
+    password: user
+  data:
+    neo4j:
+      uri: 'http://localhost:7474'
+      username: neo4j
+      password: root
+
+  jpa:
+    show-sql: 'true'
+    properties:
+      hibernate:
+        dialect: 'org.hibernate.dialect.MySQL5Dialect'
+        order_inserts: true
+        order_updates: true
+        generate_statistics: true
+        jdbc:
+          batch_size: 500
+    hibernate:
+      ddl-auto: 'update'
+      naming-strategy: 'org.hibernate.cfg.ImprovedNamingStrategy'
+
+spring.datasource.testOnBorrow: true
+spring.datasource.validationQuery: SELECT 1
+
+
+#provide the path of migration pipeline json file to read migration pipeline from json
+spring.data.rest.defaultMediaType: application/json
+
+hive2:
+  url: "jdbc:hive2://dm-hdp2-5-master.datametica.com:2181,dm-hdp2-5-slave1.datametica.com:2181,dm-hdp2-5-slave3.datametica.com:2181,dm-hdp2-5-slave2.datametica.com:2181/demo249;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2-hive2"
+  username:  eagledev
+  password: eagledev
+  driverClassName: org.apache.hive.jdbc.HiveDriver
+  supported: false
+
+server:
+  compression:
+    enabled: true
+    excluded-user-agents:
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 2048
+
+bigquery:
+  authorization_key: "/home/gauravpreet.singh/dm-eagle-lbg-3477482d07da.json"
+  default_dataset: "prod1_18102019"
+  supported: false

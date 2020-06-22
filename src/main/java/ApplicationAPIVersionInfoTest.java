@@ -6,19 +6,19 @@ import java.util.List;
 
 public class ApplicationAPIVersionInfoTest {
   public static void main(String[] args) {
-    List<ApplicationAPIVersionInfo> applicationAPIVersionInfoList = new ArrayList<>();
+    List<ApplicationAPIVersionInfoV2> applicationAPIVersionInfoList = new ArrayList<>();
     List<String> input = Arrays.asList("Mail App, Authentication API, v6", "Video Call App, Authentication API, v7");
     for (String inputString : input) {
       String[] inputLineArray = inputString.split(",");
-      applicationAPIVersionInfoList.add(new ApplicationAPIVersionInfo(inputLineArray[0].trim(), inputLineArray[1].trim(), inputLineArray[2].trim()));
+      applicationAPIVersionInfoList.add(new ApplicationAPIVersionInfoV2(inputLineArray[0].trim(), inputLineArray[1].trim(), inputLineArray[2].trim()));
     }
     ApplicationAPIVersionInfoTest test = new ApplicationAPIVersionInfoTest();
-    ApplicationAPIVersionInfo result = test.getOlderApplicationAPIVersion(applicationAPIVersionInfoList);
+    ApplicationAPIVersionInfoV2 result = test.getOlderApplicationAPIVersion(applicationAPIVersionInfoList);
     System.out.println("APIName:" + result.getApplicationName() + "::" + result.getApiName());
   }
 
-  public ApplicationAPIVersionInfo getOlderApplicationAPIVersion(List<ApplicationAPIVersionInfo> applicationAPIVersionInfoList) {
-    Collections.sort(applicationAPIVersionInfoList, Comparator.comparing(ApplicationAPIVersionInfo::getVersion));
+  public ApplicationAPIVersionInfoV2 getOlderApplicationAPIVersion(List<ApplicationAPIVersionInfoV2> applicationAPIVersionInfoList) {
+    Collections.sort(applicationAPIVersionInfoList, Comparator.comparing(ApplicationAPIVersionInfoV2::getVersion));
     return applicationAPIVersionInfoList.get(0);
   }
 }
